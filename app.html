@@ -2,7 +2,7 @@
 <html lang="en" class="h-100">
 
 <head>
-    <title>App Name: A Coding Project by Adrián Muñoz</title>
+    <title>FIZZ BUZZ: A Coding Project by Adrián Muñoz</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -27,7 +27,7 @@
             <!--Need the mark of the logo-->
             <img src="/img/Adrián_logo.png" class="d-inline-block align-text-top" 
             alt="LogoMark" width="30"> 
-            <div class="d-block ms-2 m-auto text-uppercase">App Name</div></a>
+            <div class="d-block ms-2 m-auto text-uppercase">FIZZ BUZZ</div></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
             aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -55,7 +55,50 @@
 </nav>
 <!-- ==== Main Section ==== -->
 <main class="flex-shrink-0">
-    <div class="container"></div>
+    <div class="container mt-5">
+        <div class="row row-cols-1 row-cols-lg-2 gy-3">
+            <div class="col col-lg-5">
+                <h1>FIZZ BUZZ: A coding project</h1>
+                <h4 class="lead border-bottom pb-4 mb-3">
+                    Fizz when it counts, Buzz as well. A javascript coding exercise uisng loops. A program that
+                    displays the numbers from 1 to 100. When the number is multiple of 3, it displays "Fizz". When it is multiple
+                    of 5, it displays "Buzz". If the number is multiple of 3 and 5 it displays "FizzBuzz".
+                </h4>
+                <h2>Instructions</h2>
+                <h4 class="lead">
+                    Enter the numbers you want to display Fizz and Buzz. By deafault, and usually, the numbers are
+                    3 and 5, but you can choose whatever the number you please! <br>
+                    <strong class="fs-5 mt-2 text-light text-center d-block text-uppercase">The numbers must be between 1 and 100. <br> You can choose 1 
+                    and/or 100 too.</strong>
+                </h4>
+            </div>
+            <div class="col col-lg-7">
+                <form class="row row-cols-2 gy-3 mb-3">
+                    <div class="col">
+                        <label class="form-label fw-bold">Enter a Fizz number</label>
+                        <input id="FizzNumber" type="number" class="form-control" aria-label="Enter a Fizz Number"
+                        value="3">
+                    </div>
+                    <div class="col">
+                        <label class="form-label fw-bold">Enter a Buzz number</label>
+                        <input id="BuzzNumber" type="number" class="form-control" aria-label="Enter a Buzz Number"
+                        value="5">
+                    </div>
+                    <div class="col-12">
+                        <button id="submit-FizzBuzz-Number" class="btn btn-light">Submit</button>
+                    </div>
+                </form>
+                <table class="table table-responsive table-dark table-striped">
+                    <thead>
+                        <tr><th>Fizz Buzz Results</th></tr>
+                    </thead>
+                    <tbody>
+                        <!-- ==RESULTS GO HERE== -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 </main>
 <!-- ==== Footer Section ==== -->
 <footer class="footer mt-auto py-3 sticky-footer">
