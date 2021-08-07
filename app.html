@@ -77,20 +77,20 @@
                     <div class="col">
                         <label class="form-label fw-bold">Enter a Fizz number</label>
                         <input id="FizzNumber" type="number" class="form-control" aria-label="Enter a Fizz Number"
-                        placeholder="3">
+                        value="3">
                     </div>
                     <div class="col">
                         <label class="form-label fw-bold">Enter a Buzz number</label>
                         <input id="BuzzNumber" type="number" class="form-control" aria-label="Enter a Buzz Number"
-                        placeholder="5">
+                        value="5">
                     </div>
                     <div class="col-12">
-                        <button id="submitFizzBuzzNumber" class="btn btn-light">Submit</button>
+                        <button id="submitFizzBuzzNumber" class="btn btn-light" type="button">Submit</button>
                     </div>
                 </form>
-                <table class="table table-responsive table-dark table-striped">
+                <table id="table" class="table table-responsive table-dark table-striped table-sm d-none">
                     <thead>
-                        <tr><th>Fizz Buzz Results</th></tr>
+                        <tr><th colspan="5">Fizz Buzz Results</th></tr>
                     </thead>
                     <tbody id="results">
                         <!-- ==RESULTS GO HERE== -->
@@ -131,7 +131,7 @@
         integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous">
     </script>
     <script src="/js/site.js"></script>
-    <script>
+    <script >
         document.getElementById("submitFizzBuzzNumber").addEventListener("click", startFizzBuzz);
     </script>
 </body>

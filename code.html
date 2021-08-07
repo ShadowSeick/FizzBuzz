@@ -62,22 +62,143 @@
 <main class="flex-shrink-0">
     <div class="container py-5 px-5">
         <h2 class="border-bottom border-1 border-white mt-5">The Code for FIZZ BUZZ</h2>
-        <div class="row row-cols-1 row-cols-lg-2">
+        <div class="row row-cols-1 row-cols-lg-2 gy-5">
             <div class="col-lg-8 order-last order-lg-first">
                 <pre class="line-numbers"><code class="language-javascript">
-                    //Call Hello World
-                    function helloWorld() {
-                    alert("Hello World");
+                    //Launch Function
+                    function startFizzBuzz() {
+                        let fizzNumber = document.getElementById("FizzNumber").value;
+                        let buzzNumber = document.getElementById("BuzzNumber").value;
+                        
+                        fizzNumber = Number.parseInt(fizzNumber);
+                        buzzNumber = Number.parseInt(buzzNumber);
+
+                        if (typeof fizzNumber === "number" && typeof buzzNumber === "number" && 
+                        fizzNumber > 0 && fizzNumber <= 100 && 
+                        buzzNumber > 0 && buzzNumber <= 100) {
+
+                            //Logic Function
+                            let fizzBuzzArray = chooseFizzOrBuzzNumber(fizzNumber, buzzNumber);
+
+                            //Display Function
+                            displayFizzBuzz(fizzBuzzArray);
+                        }
+                        else {
+                            alert("You have to put a value between 1 and 100")
+                        }
+
+                    }
+
+                    //Logic Function
+                    function chooseFizzOrBuzzNumber(fizzNumber, buzzNumber) {
+
+                        let numbersArray = [...Array(100).keys()].map(k => k + 1);
+
+                        let fizzBuzzArray = numbersArray.map(number => 
+                            number % fizzNumber === 0 && number % buzzNumber === 0 ? "FizzBuzz" :
+                            number % fizzNumber === 0 ? "Fizz" :
+                            number % buzzNumber === 0 ? "Buzz" :  number
+                        );
+
+                        return fizzBuzzArray;
+                    }
+
+                    //Display Function
+                    function displayFizzBuzz(fizzBuzzArray) {
+
+                        document.getElementById("table").classList.remove("d-none");
+
+                        let table = document.getElementById("results");
+                        table.innerHTML = "";
+                        let row;
+
+                        for (let i = 0; i < fizzBuzzArray.length; i++) {
+                            if (i === 0 || i % 5 === 0 ){
+                                row = table.insertRow();
+
+                            }
+                            let cell = row.insertCell();
+                            cell.innerHTML += `${fizzBuzzArray[i]}`;
+                        }
                     }
                     </code>
                 </pre>
             </div>
             <div class="col-lg-4">
-                <p>The Code is structured in one function.</p>
-                <h5>Hello World</h5>
-                <p>Hello World is a function that displays an alert with a message of
-                    "Hello World"
+                <p>The code is separated in 3 functions. Each one has its purpose and so, it only contains
+                    what it has to execute.
                 </p>
+                <div class="accordion" id="accordionExample">
+                    <div class="accordion-item">
+                      <h2 class="accordion-header font-monospace" id="headingOne">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                          Controller function
+                        </button>
+                      </h2>
+                      <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample" style="">
+                        <div class="accordion-body text-dark">
+                          <strong class="font-monospace">startFizzBuzz()</strong> 
+                          <p>
+                            As its name implies, it launches and controls the application. Here, I haven't used ES6
+                            and instead I have used the traditional if/else. This is for readability purpose only.
+                            It works the other way also but, i will show how it appears:
+                            <div class="container"><pre class="line-numbers">
+                                <code class="lang-javascript">
+                                    let fizzBuzzArray = typeof fizzNumber === "number" && typeof buzzNumber === "number" && 
+                                    fizzNumber > 0 && fizzNumber <= 100 && 
+                                    buzzNumber > 0 && buzzNumber <= 100 ? chooseFizzOrBuzzNumber(fizzNumber, buzzNumber) :
+                                    alert("You have to put a value between 1 and 100");
+                                    
+                                    displayFizzBuzz(fizzBuzzArray);
+                                </code>
+                            </pre> 
+                            </div>
+                            It is more compact, but not so readable. There is another problem too, when the numbers don't satisfy
+                            the conditions, the variable has a null value. It can be used to our advantage, in the display function,
+                            but we don't need it, as the function won't launch the way it is coded.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="accordion-item">
+                      <h2 class="accordion-header font-monospace" id="headingTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                          Logic function
+                        </button>
+                      </h2>
+                      <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                        <div class="accordion-body text-dark">
+                          <strong class="font-monospace">chooseFizzOrBuzzNumber(fizzNumber, buzzNumber)</strong>
+                          <p>
+                            This function generates and returns an array. To make the array I could have chosen a For Loop, but I have
+                            chosen another method, more concrete, more readable and faster. The array is done with the
+                            array generator, but the array is empty. So the spread operator is used and the keys of the array (the indexes)
+                            to generate the array, but the array starts at 0 and ends with 99, so the map function is used to sum 1 to each number.
+                            Then another map function is used to generate the fizzBuzzArray.  
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="accordion-item">
+                      <h2 class="accordion-header font-monospace" id="headingThree">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                          Display function
+                        </button>
+                      </h2>
+                      <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                        <div class="accordion-body text-dark">
+                          <strong class="font-monospace">displayFizzBuzz(fizzBuzzArray)</strong>
+                          <p>
+                            Its porpuse is to display the array into a table. To make this first we make the table visible, removing a class from it.
+                            Then we grab the tbody component where the results will go (I have put the name table, even it is not, to make it easier
+                            to read). The innerHTML of the table is reseted and we use a for loop to make the different rows and cells and display the
+                            results of the array.
+                            Probably, there is a ES6 better way to display the results (replacing the For Loop), but I haven't found the way yet.        
+                            </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
             </div>
         </div>
     </div>
